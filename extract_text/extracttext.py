@@ -4,7 +4,7 @@ import re
 
 def pdfreader(pdfile):
     total = 0
-    mydict = {}
+    pdfdict = {}
     # creating a pdf reader object 
     reader = PdfReader(pdfile) 
 
@@ -23,11 +23,11 @@ def pdfreader(pdfile):
         paragraph = extract.split(None)
 
         for i in paragraph:
-            if i not in mydict:
-                mydict[i] = 0
-                mydict[i] += 1
+            if i not in pdfdict:
+                pdfdict[i] = 0
+                pdfdict[i] += 1
             else:
-                mydict[i] += 1    
-    print(mydict)
+                pdfdict[i] += 1    
+    print(pdfdict)
 
 pdfreader('example.pdf')
