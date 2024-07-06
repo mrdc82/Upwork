@@ -20,7 +20,3 @@ for i in range(numparagraphs):
             docxdict[word] += 1  
 
 print(docxdict)
-
-    
-
-
