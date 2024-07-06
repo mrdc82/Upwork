@@ -1,14 +1,16 @@
 # importing required classes 
-from pypdf import PdfReader 
+from pypdf import PdfReader
+import re
 
-def pdfreader():
+def pdfreader(pdfile):
     total = 0
+    mydict = {}
     # creating a pdf reader object 
-    reader = PdfReader('example.pdf') 
+    reader = PdfReader(pdfile) 
 
     # printing number of pages in pdf file 
     numpages = (len(reader.pages)) 
-    print(numpages)
+    #print(numpages)
 
     # creating a page object 
     for i in range(numpages):
@@ -17,15 +19,10 @@ def pdfreader():
     # extracting text from page 
         extract = (page.extract_text())
         extract = extract.lower()
-        extract = extract.replace('\n','')
-        paragraph = extract.split(' ')
-        #paragraph = extract.strip('\n')
-
-        mydict = {}
+        extract = re.sub('[()/!:#$,0123456789-]', '', extract)
+        paragraph = extract.split(None)
 
         for i in paragraph:
-            #with open("words.txt", "a+") as words:
-            #reading = words.read()
             if i not in mydict:
                 mydict[i] = 0
                 mydict[i] += 1
@@ -33,4 +30,4 @@ def pdfreader():
                 mydict[i] += 1    
     print(mydict)
 
-pdfreader()
+pdfreader('example.pdf')
