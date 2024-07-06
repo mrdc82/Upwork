@@ -5,6 +5,7 @@ import read_doc
 import read_docx
 import read_pdf
 import read_txt
+import csv
 
 srcdir = ad(title='Select Source Folder') # shows dialog box and return the path
 print(srcdir)
@@ -14,17 +15,14 @@ print(destdir)
 
 if __name__ == '__main__':
     # Iterate over files in directory
-    for name in os.listdir(srcdir):
-        if name.endswith('.doc'):
+    for fname in os.listdir(srcdir):
+        if fname.endswith('.doc'):
             read_doc.docfile()
-        elif name.endswith('.docx'):
+        elif fname.endswith('.docx'):
             read_docx.docxfile()
-        elif name.endswith('.pdf'):
+        elif fname.endswith('.pdf'):
             read_pdf.pdffile()
-        elif name.endswith('.txt'):
+        elif fname.endswith('.txt'):
             read_txt.txtfile()
         else:
-            print(f"{name} Not a valid file")
-
-    #(pd.DataFrame.from_dict(data=pdfdict, orient='index').to_csv('dict_file.csv', header=False))
-    #print(pdfdict)
+            print(f"{fname} is invalid")

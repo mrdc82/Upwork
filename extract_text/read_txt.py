@@ -1,7 +1,7 @@
+
 def txtfile():
 
     txtdict = {}
-
     with open("example.txt","r") as file:
         x = file.read()
         x = x.lower()

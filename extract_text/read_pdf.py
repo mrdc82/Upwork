@@ -3,9 +3,8 @@ from pypdf import PdfReader
 import re
 import pandas as pd
 
-
 def pdffile():
-    
+
     pdfile = "example.pdf"
     total = 0
     pdfdict = {}
@@ -34,6 +33,10 @@ def pdffile():
                 pdfdict[i] += 1
 
     print(pdfdict)
+
+    #write dictionary to csv file
+    pd.DataFrame.from_dict(data=pdfdict, orient='index').to_csv('wordcount.csv', header=False)
+
 
 if __name__ == '__main__':
     pdffile()
