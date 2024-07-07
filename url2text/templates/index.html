@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Save Website Text</title>
+</head>
+<body>
+    <h1>Save Website Text to File</h1>
+    <form method="post">
+        <label for="url">Website URL:</label><br>
+        <input type="text" id="url" name="url" required><br><br>
+        <label for="filename">Output File Name:</label><br>
+        <input type="text" id="filename" name="filename" required><br><br>
+        <input type="submit" value="Save">
+    </form>
+    {% if message %}
+    <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>
